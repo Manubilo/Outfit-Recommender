@@ -3,10 +3,24 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
-    <div className="flex h-20 justify-around items-center bg-red-400 text-white">
+    <div className="flex w-full h-20 justify-around items-center bg-red-400 text-white">
       {/* Logo and Website name */}
-      <div>
-        <h1 className="text-lg">Outfit Recommender</h1>
+      <div className="flex items-center">
+        <svg
+          className="w-10 h-10 mr-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M13 10V3L4 14h7v7l9-11h-7z"
+          ></path>
+        </svg>
+        <h1 className="text-lg font-semibold uppercase">Outfit Recommender</h1>
       </div>
       {/* Links */}
       <div>
