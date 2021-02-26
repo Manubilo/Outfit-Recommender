@@ -14,13 +14,15 @@ const Navbar = () => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
             d="M13 10V3L4 14h7v7l9-11h-7z"
           ></path>
         </svg>
-        <h1 className="text-lg font-semibold uppercase">Outfit Recommender</h1>
+        <Link className="mx-10 text-lg font-semibold uppercase" to="/">
+          Outfit Recommender{' '}
+        </Link>
       </div>
       {/* Links */}
       <div>
