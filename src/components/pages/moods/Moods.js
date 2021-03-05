@@ -38,20 +38,20 @@ const Moods = () => {
 
     axios
       .post('http://localhost:5000/mood/create', body, config)
-      .then(() => setMood(''));
+      .then(() => listNewMoods());
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    createMood().then(() => listNewMoods());
+    createMood();
   };
 
   return (
     <div className="m-10">
       {/* Title and button */}
-      <div className="flex items-center max-w-lg justify-around">
-        <div>
-          <h1 className="font-medium uppercase text-xl">moods</h1>
+      <div className="flex items-center max-w justify-between">
+        <div className="max-w-md">
+          <h1 className="font-medium text-6xl">Moods</h1>
         </div>
 
         <form action="" onSubmit={onSubmit}>
