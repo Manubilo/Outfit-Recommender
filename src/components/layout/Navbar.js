@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+  const [camisasChecked, setCamisasChecked] = useState(false);
   return (
     <div className="flex w-full h-20 justify-around items-center bg-red-400 text-white">
       {/* Logo and Website name */}
