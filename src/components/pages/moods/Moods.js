@@ -19,7 +19,7 @@ const Moods = () => {
 
   useEffect(() => {
     listMoods().then((data) => setMoodsList(data));
-  }, []);
+  }, [moodsList]);
 
   const onChange = (e) => {
     const newMood = e.target.value;
@@ -74,7 +74,11 @@ const Moods = () => {
       <div className="grid grid-cols-3 m-10 justify-evenly gap-10">
         {moodsList
           ? moodsList.map((mood) => (
-              <MoodCard key={mood.id_mood} moodName={mood.mood_name} />
+              <MoodCard
+                key={mood.id_mood}
+                moodName={mood.mood_name}
+                idMood={mood.id_mood}
+              />
             ))
           : null}
       </div>
