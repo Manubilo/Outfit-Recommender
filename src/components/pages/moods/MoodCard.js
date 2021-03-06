@@ -1,8 +1,6 @@
 import axios from 'axios';
 import React from 'react';
 
-import Moods from './Moods';
-
 const MoodCard = ({ moodName, idMood }) => {
   const deleteMood = async (idMood) => {
     console.log('im on delete', idMood);
@@ -20,7 +18,7 @@ const MoodCard = ({ moodName, idMood }) => {
       <div>
         {' '}
         <button className="p-1 mx-2 border-none rounded-md  bg-green-500 text-white ">
-          Editar
+          Edit
         </button>
         <button
           onClick={() => deleteMood(idMood)}

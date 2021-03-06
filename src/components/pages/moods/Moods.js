@@ -19,7 +19,7 @@ const Moods = () => {
 
   useEffect(() => {
     listMoods().then((data) => setMoodsList(data));
-  }, [moodsList]);
+  }, []);
 
   const onChange = (e) => {
     const newMood = e.target.value;
@@ -64,7 +64,7 @@ const Moods = () => {
             className="outline-none p-2 border  focus:border-red-400 mr-10"
           />
           <button className="p-2 border-none rounded-md bg-red-400 text-white">
-            Nuevo Mood
+            New Mood
           </button>
         </form>
       </div>
