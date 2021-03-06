@@ -1,7 +1,65 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import GarmentsContext from '../../../context/garments/garmentsContext';
+import { GARMENT_LIST_SUCCESS } from '../../../context/types';
 
 const GarmentsSidebar = () => {
-  const [camisasChecked, setCamisasChecked] = useState(false);
+  const [hatChecked, setHatChecked] = useState(false);
+  const [topChecked, setTopChecked] = useState(false);
+  const [bottomChecked, setBottomChecked] = useState(false);
+  const [shoeChecked, setShoeChecked] = useState(false);
+  const [happyChecked, setHappyChecked] = useState(false);
+
+  const garmentsContext = useContext(GarmentsContext);
+  const { garmentsList, listGarments, updateGarmentsList } = garmentsContext;
+
+  const handleHatChange = async () => {
+    if (!hatChecked) {
+      const newGarmentsList = garmentsList.filter(
+        (garment) => garment.garment_type == 'hat'
+      );
+      updateGarmentsList(newGarmentsList);
+    } else {
+      listGarments();
+    }
+    setHatChecked(!hatChecked);
+  };
+
+  const handleTopChange = async () => {
+    if (!topChecked) {
+      const newGarmentsList = garmentsList.filter(
+        (garment) => garment.garment_type == 'top'
+      );
+      updateGarmentsList(newGarmentsList);
+    } else {
+      listGarments();
+    }
+    setTopChecked(!topChecked);
+  };
+
+  const handleBottomChange = async () => {
+    if (!bottomChecked) {
+      const newGarmentsList = garmentsList.filter(
+        (garment) => garment.garment_type == 'bottom'
+      );
+      updateGarmentsList(newGarmentsList);
+    } else {
+      listGarments();
+    }
+    setBottomChecked(!bottomChecked);
+  };
+
+  const handleShoeChange = async () => {
+    if (!shoeChecked) {
+      const newGarmentsList = garmentsList.filter(
+        (garment) => garment.garment_type == 'shoe'
+      );
+      updateGarmentsList(newGarmentsList);
+    } else {
+      listGarments();
+    }
+    setShoeChecked(!shoeChecked);
+  };
+
   return (
     <div className="flex flex-col w-full md:w-64 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0">
       <div className="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
@@ -34,13 +92,13 @@ const GarmentsSidebar = () => {
           >
             Garment Type
           </a>
-          {/* Checkboxes */}
+          {/* Garment Type */}
           <div className="grid grid-cols-2 pt-4">
             <label className="flex items-center justify-start space-x-3 mb-2">
               <input
                 type="checkbox"
-                checked={camisasChecked}
-                onChange={() => setCamisasChecked(!camisasChecked)}
+                checked={hatChecked}
+                onChange={() => handleHatChange()}
                 className="form-tick appearance-none h-6 w-6 border border-gray-300 rounded-md checked:bg-red-400 checked:border-transparent focus:outline-none"
               />
               <span className="text-gray-900">Hat</span>
@@ -48,8 +106,8 @@ const GarmentsSidebar = () => {
             <label className="flex items-center justify-start space-x-3 mb-2">
               <input
                 type="checkbox"
-                checked={camisasChecked}
-                onChange={() => setCamisasChecked(!camisasChecked)}
+                checked={topChecked}
+                onChange={() => handleTopChange()}
                 className="form-tick appearance-none h-6 w-6 border border-gray-300 rounded-md checked:bg-red-400 checked:border-transparent focus:outline-none"
               />
               <span className="text-gray-900 ">Top</span>
@@ -57,8 +115,8 @@ const GarmentsSidebar = () => {
             <label className="flex items-center justify-start space-x-3 mb-2">
               <input
                 type="checkbox"
-                checked={camisasChecked}
-                onChange={() => setCamisasChecked(!camisasChecked)}
+                checked={bottomChecked}
+                onChange={() => handleBottomChange()}
                 className="form-tick appearance-none h-6 w-6 border border-gray-300 rounded-md checked:bg-red-400 checked:border-transparent focus:outline-none"
               />
               <span className="text-gray-900 ">Bottom</span>
@@ -66,8 +124,8 @@ const GarmentsSidebar = () => {
             <label className="flex items-center justify-start space-x-3 mb-2">
               <input
                 type="checkbox"
-                checked={camisasChecked}
-                onChange={() => setCamisasChecked(!camisasChecked)}
+                checked={shoeChecked}
+                onChange={() => handleShoeChange()}
                 className="form-tick appearance-none h-6 w-6 border border-gray-300 rounded-md checked:bg-red-400 checked:border-transparent focus:outline-none"
               />
               <span className="text-gray-900 ">Shoe</span>
@@ -86,38 +144,11 @@ const GarmentsSidebar = () => {
             <label className="flex items-center justify-start space-x-3 mb-2">
               <input
                 type="checkbox"
-                checked={camisasChecked}
-                onChange={() => setCamisasChecked(!camisasChecked)}
+                checked={happyChecked}
+                onChange={() => setHappyChecked(!happyChecked)}
                 className="form-tick appearance-none h-6 w-6 border border-gray-300 rounded-md checked:bg-red-400 checked:border-transparent focus:outline-none"
               />
               <span className="text-gray-900">Feliz</span>
-            </label>
-            <label className="flex items-center justify-start space-x-3 mb-2">
-              <input
-                type="checkbox"
-                checked={camisasChecked}
-                onChange={() => setCamisasChecked(!camisasChecked)}
-                className="form-tick appearance-none h-6 w-6 border border-gray-300 rounded-md checked:bg-red-400 checked:border-transparent focus:outline-none"
-              />
-              <span className="text-gray-900 ">Animado</span>
-            </label>
-            <label className="flex items-center justify-start space-x-3 mb-2">
-              <input
-                type="checkbox"
-                checked={camisasChecked}
-                onChange={() => setCamisasChecked(!camisasChecked)}
-                className="form-tick appearance-none h-6 w-6 border border-gray-300 rounded-md checked:bg-red-400 checked:border-transparent focus:outline-none"
-              />
-              <span className="text-gray-900 ">Cansado</span>
-            </label>
-            <label className="flex items-center justify-start space-x-3 mb-2">
-              <input
-                type="checkbox"
-                checked={camisasChecked}
-                onChange={() => setCamisasChecked(!camisasChecked)}
-                className="form-tick appearance-none h-6 w-6 border border-gray-300 rounded-md checked:bg-red-400 checked:border-transparent focus:outline-none"
-              />
-              <span className="text-gray-900 ">Triste</span>
             </label>
           </div>
         </div>

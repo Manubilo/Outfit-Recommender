@@ -30,6 +30,13 @@ const GarmentsState = (props) => {
       );
   };
 
+  const updateGarmentsList = (list) => {
+    dispatch({
+      type: GARMENT_LIST_SUCCESS,
+      payload: list,
+    });
+  };
+
   const createGarment = async (garmentName, garmentType) => {
     const config = {
       'Content-Type': 'application/json',
@@ -49,7 +56,12 @@ const GarmentsState = (props) => {
 
   return (
     <GarmentsContext.Provider
-      value={{ garmentsList: state.garmentsList, listGarments, createGarment }}
+      value={{
+        garmentsList: state.garmentsList,
+        listGarments,
+        createGarment,
+        updateGarmentsList,
+      }}
     >
       {props.children}
     </GarmentsContext.Provider>
