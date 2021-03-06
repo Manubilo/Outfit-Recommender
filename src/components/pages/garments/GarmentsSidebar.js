@@ -9,7 +9,7 @@ const GarmentsSidebar = () => {
           href="#"
           className="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline"
         >
-          Filtros
+          Filters
         </a>
         <button className="rounded-lg md:hidden focus:outline-none focus:shadow-outline">
           <svg fill="currentColor" viewBox="0 0 20 20" className="w-6 h-6">
@@ -32,7 +32,7 @@ const GarmentsSidebar = () => {
             className="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-gray-200 rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
             href="#"
           >
-            Tipo de Prenda
+            Garment Type
           </a>
           {/* Checkboxes */}
           <div className="grid grid-cols-2 pt-4">
@@ -43,7 +43,7 @@ const GarmentsSidebar = () => {
                 onChange={() => setCamisasChecked(!camisasChecked)}
                 className="form-tick appearance-none h-6 w-6 border border-gray-300 rounded-md checked:bg-red-400 checked:border-transparent focus:outline-none"
               />
-              <span className="text-gray-900">Camisa</span>
+              <span className="text-gray-900">Hat</span>
             </label>
             <label className="flex items-center justify-start space-x-3 mb-2">
               <input
@@ -52,7 +52,7 @@ const GarmentsSidebar = () => {
                 onChange={() => setCamisasChecked(!camisasChecked)}
                 className="form-tick appearance-none h-6 w-6 border border-gray-300 rounded-md checked:bg-red-400 checked:border-transparent focus:outline-none"
               />
-              <span className="text-gray-900 ">Pantalón</span>
+              <span className="text-gray-900 ">Top</span>
             </label>
             <label className="flex items-center justify-start space-x-3 mb-2">
               <input
@@ -61,7 +61,7 @@ const GarmentsSidebar = () => {
                 onChange={() => setCamisasChecked(!camisasChecked)}
                 className="form-tick appearance-none h-6 w-6 border border-gray-300 rounded-md checked:bg-red-400 checked:border-transparent focus:outline-none"
               />
-              <span className="text-gray-900 ">Calzado</span>
+              <span className="text-gray-900 ">Bottom</span>
             </label>
             <label className="flex items-center justify-start space-x-3 mb-2">
               <input
@@ -70,7 +70,7 @@ const GarmentsSidebar = () => {
                 onChange={() => setCamisasChecked(!camisasChecked)}
                 className="form-tick appearance-none h-6 w-6 border border-gray-300 rounded-md checked:bg-red-400 checked:border-transparent focus:outline-none"
               />
-              <span className="text-gray-900 ">Polo</span>
+              <span className="text-gray-900 ">Shoe</span>
             </label>
           </div>
         </div>

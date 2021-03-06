@@ -1,24 +1,16 @@
-import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import MoodsContext from '../../../context/moods/moodsContext';
 import MoodCard from './MoodCard';
 
 const Moods = () => {
   const [mood, setMood] = useState('');
-  const [moodsList, setMoodsList] = useState([]);
 
-  const listNewMoods = () => {
-    console.log('listing new moods');
-    listMoods().then((data) => setMoodsList(data));
-  };
+  const moodsContext = useContext(MoodsContext);
 
-  const listMoods = async () => {
-    return axios
-      .get('http://localhost:5000/mood/list', { params: { id: 1 } })
-      .then((data) => data.data.body.moods);
-  };
+  const { listMoods, moodsList, createMood } = moodsContext;
 
   useEffect(() => {
-    listMoods().then((data) => setMoodsList(data));
+    listMoods();
   }, []);
 
   const onChange = (e) => {
@@ -26,24 +18,10 @@ const Moods = () => {
     setMood(newMood);
   };
 
-  const createMood = async () => {
-    const config = {
-      'Content-Type': 'application/json',
-    };
-
-    const body = {
-      id: 1,
-      moodName: mood,
-    };
-
-    axios
-      .post('http://localhost:5000/mood/create', body, config)
-      .then(() => listNewMoods());
-  };
-
   const onSubmit = (e) => {
     e.preventDefault();
-    createMood();
+    createMood(mood);
+    setMood('');
   };
 
   return (

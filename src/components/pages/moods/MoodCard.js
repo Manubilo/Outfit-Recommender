@@ -1,14 +1,10 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useContext } from 'react';
+import MoodsContext from '../../../context/moods/moodsContext';
 
 const MoodCard = ({ moodName, idMood }) => {
-  const deleteMood = async (idMood) => {
-    console.log('im on delete', idMood);
-
-    axios
-      .delete('http://localhost:5000/mood/delete', { data: { id: idMood } })
-      .then((res) => console.log(res));
-  };
+  const moodsContext = useContext(MoodsContext);
+  const { deleteMood } = moodsContext;
 
   return (
     <div className="w-full p-4 border-2 max-w-sm flex items-center justify-around">
