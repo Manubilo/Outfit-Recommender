@@ -1,31 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import GarmentsSidebar from './GarmentsSidebar';
 import GarmentCard from './GarmentCard';
+import GarmentsContext from '../../../context/garments/garmentsContext';
 
 const Garments = () => {
   const [garmentName, setGarmentName] = useState('');
   const [garmentType, setGarmentType] = useState('');
-  const [moods, setMoods] = useState([]);
   const [garment, setGarment] = useState({});
-  const [garmentsList, setGarmentsList] = useState([]);
 
-  const listNewGarments = () => {
-    console.log('listing new garments');
-    listGarments().then((data) => setGarmentsList(data));
-  };
-
-  const listGarments = async () => {
-    return axios
-      .get('http://localhost:5000/garment/list', { params: { id: 1 } })
-      .then((data) => data.data.body.garments);
-  };
+  const garmentsContext = useContext(GarmentsContext);
+  const { listGarments, garmentsList, createGarment } = garmentsContext;
 
   useEffect(() => {
-    listGarments().then((data) => {
-      console.log(data);
-      setGarmentsList(data);
-    });
+    listGarments();
   }, []);
 
   const onChangeGarmentName = (e) => {
@@ -38,26 +26,9 @@ const Garments = () => {
     setGarment({ ...garment, type: garmentType });
   };
 
-  const createGarment = async () => {
-    const config = {
-      'Content-Type': 'application/json',
-    };
-
-    const body = {
-      id: 1,
-      name: garmentName,
-      type: garmentType,
-      moods: [],
-    };
-
-    axios
-      .post('http://localhost:5000/garment/create', body, config)
-      .then(() => listNewGarments());
-  };
-
   const onSubmit = (e) => {
     e.preventDefault();
-    createGarment();
+    createGarment(garmentName, garmentType);
   };
 
   return (

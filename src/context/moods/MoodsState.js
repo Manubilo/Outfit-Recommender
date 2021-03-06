@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react';
 import axios from 'axios';
+import { baseURL } from '../../utils';
 
 import {
   MOOD_CREATE_SUCCESS,
@@ -13,8 +14,6 @@ import moodsReducer from './moodsReducer';
 import MoodsContext from './moodsContext';
 
 const MoodsState = (props) => {
-  const baseURL = 'http://localhost:5000/';
-
   const initialState = {
     moodsList: null,
   };
@@ -23,7 +22,7 @@ const MoodsState = (props) => {
 
   const listMoods = async () => {
     axios
-      .get('http://localhost:5000/mood/list', { params: { id: 1 } })
+      .get(`${baseURL}/mood/list`, { params: { id: 1 } })
       .then((data) =>
         dispatch({
           type: MOOD_LIST_SUCCESS,
