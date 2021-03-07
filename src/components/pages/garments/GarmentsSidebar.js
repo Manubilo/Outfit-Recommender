@@ -1,13 +1,13 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import GarmentsContext from '../../../context/garments/garmentsContext';
-import { GARMENT_LIST_SUCCESS } from '../../../context/types';
+import MoodsContext from '../../../context/moods/moodsContext';
+import GarmentsSidebarMoodCheckbox from './GarmentsSidebarMoodCheckbox';
 
-const GarmentsSidebar = () => {
+const GarmentsSidebar = ({ moodsList }) => {
   const [hatChecked, setHatChecked] = useState(false);
   const [topChecked, setTopChecked] = useState(false);
   const [bottomChecked, setBottomChecked] = useState(false);
   const [shoeChecked, setShoeChecked] = useState(false);
-  const [happyChecked, setHappyChecked] = useState(false);
 
   const garmentsContext = useContext(GarmentsContext);
   const { garmentsList, listGarments, updateGarmentsList } = garmentsContext;
@@ -59,6 +59,8 @@ const GarmentsSidebar = () => {
     }
     setShoeChecked(!shoeChecked);
   };
+
+  console.log('moodsList en garmentsSidebar', moodsList);
 
   return (
     <div className="flex flex-col w-full md:w-64 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0">
@@ -140,16 +142,23 @@ const GarmentsSidebar = () => {
             Moods
           </a>
           {/* Checkboxes */}
+          {/* ERROR: Not working for some reason */}
           <div className="grid grid-cols-2 pt-4">
-            <label className="flex items-center justify-start space-x-3 mb-2">
-              <input
-                type="checkbox"
-                checked={happyChecked}
-                onChange={() => setHappyChecked(!happyChecked)}
-                className="form-tick appearance-none h-6 w-6 border border-gray-300 rounded-md checked:bg-red-400 checked:border-transparent focus:outline-none"
+            {moodsList ? (
+              moodsList.map((mood) => {
+                <GarmentsSidebarMoodCheckbox
+                  key={mood.id_mood}
+                  idMood={mood.id_mood}
+                  moodName={mood.mood_name}
+                />;
+              })
+            ) : (
+              <GarmentsSidebarMoodCheckbox
+                key="1"
+                idMood="1"
+                moodName="prueb"
               />
-              <span className="text-gray-900">Feliz</span>
-            </label>
+            )}
           </div>
         </div>
       </nav>

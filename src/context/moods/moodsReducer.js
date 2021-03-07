@@ -37,5 +37,9 @@ export default (state, action) => {
       return {
         ...state,
       };
+    default:
+      return {
+        ...state,
+      };
   }
 };

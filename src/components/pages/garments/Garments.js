@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
 import GarmentsSidebar from './GarmentsSidebar';
 import GarmentCard from './GarmentCard';
 import GarmentsContext from '../../../context/garments/garmentsContext';
+import MoodsContext from '../../../context/moods/moodsContext';
 
 const Garments = () => {
   const [garmentName, setGarmentName] = useState('');
@@ -12,8 +12,12 @@ const Garments = () => {
   const garmentsContext = useContext(GarmentsContext);
   const { listGarments, garmentsList, createGarment } = garmentsContext;
 
+  const moodsContext = useContext(MoodsContext);
+  const { moodsList, listMoods } = moodsContext;
+
   useEffect(() => {
     listGarments();
+    listMoods();
   }, []);
 
   const onChangeGarmentName = (e) => {
@@ -34,7 +38,8 @@ const Garments = () => {
   return (
     <div className="md:flex flex-col md:flex-row md:min-h-screen w-full">
       {/* Sidebar */}
-      <GarmentsSidebar />
+      <GarmentsSidebar moodsList={moodsList} />
+
       {/* Content */}
       <div className="p-4 w-full">
         {/* Title */}

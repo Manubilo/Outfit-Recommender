@@ -23,12 +23,12 @@ const MoodsState = (props) => {
   const listMoods = async () => {
     axios
       .get(`${baseURL}/mood/list`, { params: { id: 1 } })
-      .then((data) =>
+      .then((data) => {
         dispatch({
           type: MOOD_LIST_SUCCESS,
           payload: data.data.body.moods,
-        })
-      )
+        });
+      })
       .catch((err) =>
         dispatch({
           type: MOOD_LIST_FAIL,
@@ -58,8 +58,6 @@ const MoodsState = (props) => {
   };
 
   const deleteMood = async (idMood) => {
-    console.log('im on delete', idMood);
-
     axios
       .delete('http://localhost:5000/mood/delete', { data: { id: idMood } })
       .then((res) => listMoods());
