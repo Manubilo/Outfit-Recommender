@@ -9,6 +9,8 @@ const GarmentsSidebar = ({ moodsList }) => {
   const [bottomChecked, setBottomChecked] = useState(false);
   const [shoeChecked, setShoeChecked] = useState(false);
 
+  const [checked, setChecked] = useState(false);
+
   const garmentsContext = useContext(GarmentsContext);
   const { garmentsList, listGarments, updateGarmentsList } = garmentsContext;
 
@@ -59,8 +61,6 @@ const GarmentsSidebar = ({ moodsList }) => {
     }
     setShoeChecked(!shoeChecked);
   };
-
-  console.log('moodsList en garmentsSidebar', moodsList);
 
   return (
     <div className="flex flex-col w-full md:w-64 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0">
@@ -142,23 +142,16 @@ const GarmentsSidebar = ({ moodsList }) => {
             Moods
           </a>
           {/* Checkboxes */}
-          {/* ERROR: Not working for some reason */}
-          <div className="grid grid-cols-2 pt-4">
-            {moodsList ? (
-              moodsList.map((mood) => {
-                <GarmentsSidebarMoodCheckbox
-                  key={mood.id_mood}
-                  idMood={mood.id_mood}
-                  moodName={mood.mood_name}
-                />;
-              })
-            ) : (
-              <GarmentsSidebarMoodCheckbox
-                key="1"
-                idMood="1"
-                moodName="prueb"
-              />
-            )}
+          <div className="grid grid-cols-2 p-4">
+            {moodsList
+              ? moodsList.map((mood) => (
+                  <GarmentsSidebarMoodCheckbox
+                    key={mood.id_mood}
+                    idMood={mood.id_mood}
+                    moodName={mood.mood_name}
+                  />
+                ))
+              : null}
           </div>
         </div>
       </nav>
