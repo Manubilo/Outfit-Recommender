@@ -8,6 +8,7 @@ const Garments = () => {
   const [garmentName, setGarmentName] = useState('');
   const [garmentType, setGarmentType] = useState('');
   const [garment, setGarment] = useState({});
+  const [mood, setMood] = useState();
 
   const garmentsContext = useContext(GarmentsContext);
   const { listGarments, garmentsList, createGarment } = garmentsContext;
@@ -19,6 +20,11 @@ const Garments = () => {
     listGarments();
     listMoods();
   }, []);
+
+  const onChangeMood = (e) => {
+    const newMood = e.target.value;
+    setMood(newMood);
+  };
 
   const onChangeGarmentName = (e) => {
     setGarmentName(e.target.value);
@@ -32,7 +38,9 @@ const Garments = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    createGarment(garmentName, garmentType);
+    const moods = [];
+    moods.push(mood);
+    createGarment(garmentName, garmentType, moods);
   };
 
   return (
@@ -57,6 +65,13 @@ const Garments = () => {
               placeholder="Garment name"
               className="outline-none p-2 border  focus:border-red-400 mr-10"
             />
+            <select name="mood" id="mood" value={mood} onChange={onChangeMood}>
+              {moodsList
+                ? moodsList.map((mood) => (
+                    <option key={mood.id_mood}>{mood.mood_name}</option>
+                  ))
+                : null}
+            </select>
             <select
               name="garmentType"
               id="garmentType"

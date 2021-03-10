@@ -37,16 +37,18 @@ const GarmentsState = (props) => {
     });
   };
 
-  const createGarment = async (garmentName, garmentType) => {
+  const createGarment = async (garmentName, garmentType, moods) => {
     const config = {
       'Content-Type': 'application/json',
     };
+
+    console.log('moods in createGarment', moods);
 
     const body = {
       id: 1,
       name: garmentName,
       type: garmentType,
-      moods: [],
+      moods: moods,
     };
 
     axios
