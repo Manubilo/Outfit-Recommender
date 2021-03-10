@@ -3,6 +3,10 @@ import React, { useState } from 'react';
 const GarmentsSidebarMoodCheckbox = ({ idMood, moodName }) => {
   const [checked, setChecked] = useState(false);
 
+  const comment = () => {
+    //Handle moods filter
+  };
+
   return (
     <label className="flex items-center justify-start space-x-3 mb-2">
       <input

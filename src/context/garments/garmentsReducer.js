@@ -19,5 +19,14 @@ export default (state, action) => {
         ...state,
         garmentsList: null,
       };
+    case GARMENT_DELETE_SUCCESS:
+      return {
+        ...state,
+        ...action.payload,
+      };
+    case GARMENT_DELETE_FAIL:
+      return {
+        ...state,
+      };
   }
 };

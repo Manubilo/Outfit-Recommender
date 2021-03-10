@@ -54,6 +54,15 @@ const GarmentsState = (props) => {
       .then(() => listGarments());
   };
 
+  const deleteGarment = async (idGarment) => {
+    console.log('idGarment', idGarment);
+    axios
+      .delete(`${baseURL}/garment/delete`, {
+        data: { id: idGarment },
+      })
+      .then((res) => listGarments());
+  };
+
   return (
     <GarmentsContext.Provider
       value={{
@@ -61,6 +70,7 @@ const GarmentsState = (props) => {
         listGarments,
         createGarment,
         updateGarmentsList,
+        deleteGarment,
       }}
     >
       {props.children}
